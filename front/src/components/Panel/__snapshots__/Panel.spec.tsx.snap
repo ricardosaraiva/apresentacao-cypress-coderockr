@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Componente Panel Valida se o componente panel esta renderizando 1`] = `
+CSSStyleDeclaration {
+  "0": "display",
+  "1": "width",
+  "2": "position",
+  "3": "z-index",
+  "4": "color",
+  "5": "background",
+  "6": "padding",
+  "7": "text-align",
+  "8": "box-shadow",
+  "9": "visibility",
+  "_importants": Object {
+    "background": "",
+    "box-shadow": "",
+    "color": "",
+    "display": "",
+    "padding": "",
+    "position": "",
+    "text-align": "",
+    "visibility": undefined,
+    "width": "",
+    "z-index": "",
+  },
+  "_length": 10,
+  "_onChange": [Function],
+  "_values": Object {
+    "background": "rgb(255, 255, 255)",
+    "background-color": "rgb(255, 255, 255)",
+    "box-shadow": "0 0 20px 0 rgba(0,0,0,0.2),0 5px 5px 0 rgba(0,0,0,0.24)",
+    "color": "rgb(242, 169, 28)",
+    "display": "block",
+    "padding": "30px",
+    "padding-bottom": "30px",
+    "padding-left": "30px",
+    "padding-right": "30px",
+    "padding-top": "30px",
+    "position": "relative",
+    "text-align": "center",
+    "visibility": "visible",
+    "width": "100%",
+    "z-index": "1",
+  },
+}
+`;
+
+exports[`Componente Panel Valida se o componente panel esta renderizando 2`] = `
+<div>
+  <div
+    class="sc-bdfBwQ bGzPWs panel"
+  >
+    panel
+  </div>
+</div>
+`;
