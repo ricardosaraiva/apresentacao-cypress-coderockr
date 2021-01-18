@@ -1,18 +1,20 @@
 import { ReactNode } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
-import { Router } from 'react-router-dom'
+import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { createMemoryHistory } from 'history';
-import { Model, Registry, Response, Server } from 'miragejs';
+import {
+  Model, Registry, Response, Server,
+} from 'miragejs';
 
-import theme from './theme';
 import Schema from 'miragejs/orm/schema';
 import { ModelDefinition } from 'miragejs/-types';
+import theme from './theme';
 
 const history = createMemoryHistory();
 
 type User = {
-  id: number,
+  _id: number,
   name: string,
   email: string,
   password: string,
@@ -27,7 +29,7 @@ const makeServer = (): Server => new Server({
   models: {
     users: Model,
   },
-  routes: function() {
+  routes() {
     this.timing = 100;
     this.urlPrefix = 'http://localhost:8080';
     this.logging = false;
@@ -49,7 +51,7 @@ const makeServer = (): Server => new Server({
         password: body.password,
       });
 
-      if(!user) {
+      if (!user) {
         return new Response(400, {}, 'Usuário não encontrado');
       }
 
@@ -64,7 +66,7 @@ const makeServer = (): Server => new Server({
         password: body.password,
       });
 
-      if(user) {
+      if (user) {
         return new Response(400, {}, 'Usuário duplicado');
       }
 
@@ -85,19 +87,17 @@ const makeServer = (): Server => new Server({
 const renderSetup = (
   component: ReactNode,
   options?: Omit<RenderOptions, 'queries'>,
-) => {
-  return render (
-    <ThemeProvider theme={theme}>
-      <Router history={history}>
-        {component}
-      </Router>
-    </ThemeProvider>,
-    options,
-  )
-};
+) => render(
+  <ThemeProvider theme={theme}>
+    <Router history={history}>
+      {component}
+    </Router>
+  </ThemeProvider>,
+  options,
+);
 
-export * from '@testing-library/react'
-export { render as renderWihtoutTheme};
+export * from '@testing-library/react';
+export { render as renderWihtoutTheme };
 export { renderSetup as render };
 export { history };
 export { makeServer };

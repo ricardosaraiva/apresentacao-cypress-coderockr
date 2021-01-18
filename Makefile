@@ -19,3 +19,9 @@ test-clear-collection:
 		cd /var/app \
 		&& npx ts-node-script src/scripts/clearTestCollection.ts $(collection)\
 	"
+
+cypress:
+	make docker-up-test
+	cd front && yarn start > /dev/null &
+	make test-clear-database
+	cd front && yarn cypress > /dev/null &

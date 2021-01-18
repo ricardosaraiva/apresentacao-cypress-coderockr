@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+const uniqueValidator = require('mongoose-unique-validator');
 import bcrypt from 'bcrypt';
 
 const isMail = (mail: string) => {
@@ -29,7 +30,7 @@ const UserSchema: mongoose.Schema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         unique: true,
-        validate: [isMail, 'E-mail invalido']
+        validate: [isMail, 'E-mail invalido'],
     },
     password: {
         type: String,
@@ -47,7 +48,7 @@ UserSchema.pre<UserDocument>('save', async function(next) {
         this.password = await bcrypt.hash(this.password, salt);
         return next();
     } catch (err) {
-    return next(err);
+        return next(err);
     }
 });
 
@@ -73,5 +74,9 @@ UserSchema.statics.findLoggedUser = async function(
 
     return user;
 };
+
+UserSchema.plugin(uniqueValidator, {
+    message: 'Error, expected {PATH} to be unique.'
+});
 
 export default mongoose.model<UserDocument, UserModel>('User', UserSchema);

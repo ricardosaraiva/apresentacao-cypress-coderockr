@@ -181,7 +181,7 @@ const Login: FC<RouteComponentProps> = ({
 
               <ContainerText>
                 Já é registrado?
-                <a onClick={handleSignForm} type="button">Logar</a>
+                <a id="login" onClick={handleSignForm} type="button">Logar</a>
               </ContainerText>
             </ContainerForm>
 

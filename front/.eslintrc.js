@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     'cypress/globals': true,
+    'jest/globals': true,
   },
   extends: [
     'airbnb',
@@ -20,6 +21,7 @@ module.exports = {
     'react',
     '@typescript-eslint',
     'cypress',
+    'jest',
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
@@ -51,10 +53,10 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'cypress/no-assigning-return-values': 'error',
-    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/no-unnecessary-waiting': 0,
     'cypress/assertion-before-screenshot': 'warn',
     'cypress/no-force': 'warn',
-    'cypress/no-async-tests': 'error',
+    'cypress/no-async-tests': 0,
     'jsx-a11y/no-static-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0,
   },
